@@ -1,369 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="Yuriy Hu">
-    
+
     <title>
-        
-            Vue2源码学习 |
-        
-        Yuriy&#39;s blog
+
+        Vue2源码学习 | Yuriy&#39;s blog
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/images/logo.svg">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-  </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+        let KEEP = window.KEEP || {};
+        KEEP.hexo_config = {
+            "hostname": "example.com",
+            "root": "/",
+            "language": "en"
+        };
+        KEEP.theme_config = {
+            "toc": {
+                "enable": false,
+                "number": false,
+                "expand_all": false,
+                "init_open": false
+            },
+            "style": {
+                "primary_color": "#0066CC",
+                "avatar": "/images/avatar.svg",
+                "favicon": "/images/logo.svg",
+                "article_img_align": "left",
+                "left_side_width": "260px",
+                "content_max_width": "920px",
+                "hover": {
+                    "shadow": false,
+                    "scale": false
+                },
+                "first_screen": {
+                    "enable": true,
+                    "background_img": "/images/bg.svg",
+                    "description": "Keep writing and Keep loving."
+                },
+                "scroll": {
+                    "progress_bar": {
+                        "enable": true
+                    },
+                    "percent": {
+                        "enable": true
+                    }
+                }
+            },
+            "local_search": {
+                "enable": false,
+                "preload": false
+            },
+            "code_copy": {
+                "enable": false,
+                "style": "default"
+            },
+            "pjax": {
+                "enable": false
+            },
+            "lazyload": {
+                "enable": false
+            },
+            "version": "3.4.1"
+        };
+        KEEP.language_ago = {
+            "second": "%s seconds ago",
+            "minute": "%s minutes ago",
+            "hour": "%s hours ago",
+            "day": "%s days ago",
+            "week": "%s weeks ago",
+            "month": "%s months ago",
+            "year": "%s years ago"
+        };
+    </script>
+    <meta name="generator" content="Hexo 5.4.0">
+</head>
 
 
 <body>
-<div class="progress-bar-container">
-    
+    <div class="progress-bar-container">
+
         <span class="scroll-progress-bar"></span>
-    
-
-    
-</div>
 
 
-<main class="page-container">
 
-    
+    </div>
 
-    <div class="page-main-content">
 
-        <div class="page-main-content-top">
-            <header class="header-wrapper">
+    <main class="page-container">
 
-    <div class="header-content">
-        <div class="left">
-            <a class="logo-title" href="/">
+
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+                    <div class="header-content">
+                        <div class="left">
+                            <a class="logo-title" href="/">
                 Yuriy&#39;s blog
             </a>
-        </div>
+                        </div>
 
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
+                        <div class="right">
+                            <div class="pc">
+                                <ul class="menu-list">
+
+                                    <li class="menu-item">
+                                        <a class="" href="/">
                                 HOME
                             </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
+                                    </li>
+
+                                    <li class="menu-item">
+                                        <a class="" href="/archives">
                                 ARCHIVES
                             </a>
-                        </li>
-                    
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">HOME</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">ARCHIVES</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
+                                    </li>
 
 
-        </div>
+                                </ul>
+                            </div>
+                            <div class="mobile">
 
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">Vue2源码学习</span>
-        </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Yuriy Hu</span>
-                        
-                            <span class="author-label">Lv1</span>
-                        
+                                <div class="icon-item menu-bar">
+                                    <div class="menu-bar-middle"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
+
+                    <div class="header-drawer">
+                        <ul class="drawer-menu-list">
+
+                            <li class="drawer-menu-item flex-center">
+                                <a class="" href="/">HOME</a>
+                            </li>
+
+                            <li class="drawer-menu-item flex-center">
+                                <a class="" href="/archives">ARCHIVES</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="window-mask"></div>
+
+                </header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <div class="main-content">
+
+
+                    <div class="fade-in-down-animation">
+                        <div class="article-content-container">
+
+                            <div class="article-title">
+                                <span class="title-hover-animation">Vue2源码学习</span>
+                            </div>
+
+
+                            <div class="article-header">
+                                <div class="avatar">
+                                    <img src="/images/avatar.svg">
+                                </div>
+                                <div class="info">
+                                    <div class="author">
+                                        <span class="name">Yuriy Hu</span>
+
+                                        <span class="author-label">Lv1</span>
+
+                                    </div>
+                                    <div class="meta-info">
+                                        <div class="article-meta-info">
+                                            <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;2021-03-11 23:11:34
     </span>
-    
-    
-
-    
-    
-    
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <p>​    vue3发布有段时间了，现在写vue2的源码解析，只是为了记录一下前段时间学习vue2源码的一些笔记，方便日后自己查阅。也是考虑到，现在对于前端的学习总是浅尝辄止，所以需要沉淀一下自己，深入地学习和总结。</p>
-<h2 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h2><h3 id="1、实现observe和defineReactive"><a href="#1、实现observe和defineReactive" class="headerlink" title="1、实现observe和defineReactive"></a>1、实现observe和defineReactive</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">observe</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys(obj);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> key = keys[i];</span><br><span class="line">        defineReactive(obj, key, obj[key], <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span>(<span class="params">obj, key, value, enumerable</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//如果是value继续监听</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>) &#123;</span><br><span class="line">        observe(value)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Array]&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">new</span> Observer(value)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        enumerable: !!enumerable,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被获取了！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被设置了！&quot;</span>);</span><br><span class="line">            value = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、实现类Observer"><a href="#2、实现类Observer" class="headerlink" title="2、实现类Observer"></a>2、实现类Observer</h3><h4 id="a、重写Array原型"><a href="#a、重写Array原型" class="headerlink" title="a、重写Array原型"></a>a、重写Array原型</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayMethods = [</span><br><span class="line">    <span class="string">&#x27;push&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;pop&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;shift&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;unshift&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;reverse&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;splice&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sort&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrayProto = <span class="built_in">Object</span>.create(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">arrayMethods.forEach(<span class="function"><span class="params">method</span> =&gt;</span> &#123;</span><br><span class="line">    arrayProto[method] = <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(method + <span class="string">&quot;方法被使用了&quot;</span>);</span><br><span class="line">        <span class="built_in">Array</span>.prototype[method].call(<span class="built_in">this</span>, ...args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="b、实现类Observer"><a href="#b、实现类Observer" class="headerlink" title="b、实现类Observer"></a>b、实现类Observer</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.walk(value);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(value)) &#123;</span><br><span class="line">            <span class="comment">//覆盖数组的原型方法</span></span><br><span class="line">            value.__proto__ = arrayProto;</span><br><span class="line">            <span class="built_in">this</span>.dependArray(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">walk</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        observe(value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">dependArray</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Observer(value[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="c、校验结果"><a href="#c、校验结果" class="headerlink" title="c、校验结果"></a>c、校验结果</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;学不动了&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    list: [<span class="string">&#x27;vue&#x27;</span>,<span class="string">&#x27;源码&#x27;</span>, <span class="string">&#x27;老烦了&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Observer(obj);</span><br><span class="line">obj.name = <span class="string">&quot;也要学&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.age);</span><br><span class="line">obj.list.push(<span class="string">&#x27;是真的&#x27;</span>);</span><br><span class="line"><span class="comment">//打印结果</span></span><br><span class="line">name被设置了！</span><br><span class="line">age被获取了！</span><br><span class="line"><span class="number">18</span></span><br><span class="line">list被获取了！</span><br><span class="line">push方法被使用了</span><br></pre></td></tr></table></figure>
-
-<p>至此，我们已经可以顺利实现数据监听了，虽然跟源码还是有些不同的，但这是看过源码后，自己试着写写的版本</p>
-<h3 id="3、实现Dep类"><a href="#3、实现Dep类" class="headerlink" title="3、实现Dep类"></a>3、实现Dep类</h3><p>Dep的实现还是比较简单，dep的主要作用就是收集watcher依赖和依赖通知更新</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.subs = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//收集依赖</span></span><br><span class="line">    <span class="function"><span class="title">addDep</span>(<span class="params">sub</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.subs.push(sub)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//通知依赖更新</span></span><br><span class="line">    <span class="function"><span class="title">notify</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.subs.forEach(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">            sub.update();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="4、实现观察者Watcher"><a href="#4、实现观察者Watcher" class="headerlink" title="4、实现观察者Watcher"></a>4、实现观察者Watcher</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取data.person.name这种expression的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parsePath</span>(<span class="params">exp, vm</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> exp_list = exp.split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> exp_list.reduce(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pre[cur];</span><br><span class="line">    &#125;, vm.data)</span><br><span class="line">&#125;</span><br><span class="line">Dep.target = <span class="literal">null</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wachter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">vm, expOrFn, cb</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.vm = vm;</span><br><span class="line">        <span class="built_in">this</span>.expOrFn = expOrFn;</span><br><span class="line">        <span class="built_in">this</span>.cb = cb;</span><br><span class="line">        <span class="built_in">this</span>.value = <span class="built_in">this</span>.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        Dep.target = <span class="built_in">this</span>;</span><br><span class="line">        <span class="keyword">const</span> vm = <span class="built_in">this</span>.vm;</span><br><span class="line">        <span class="keyword">let</span> value = parsePath(<span class="built_in">this</span>.expOrFn, vm);</span><br><span class="line">        Dep.target = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">update</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> oldVal = <span class="built_in">this</span>.value;</span><br><span class="line">        <span class="keyword">const</span> newVal = <span class="built_in">this</span>.get();</span><br><span class="line">        <span class="built_in">this</span>.value = newVal;</span><br><span class="line">        <span class="keyword">if</span> (oldVal !== newVal) &#123;</span><br><span class="line">            <span class="comment">//如果值发生变化，执行更新回调</span></span><br><span class="line">            <span class="built_in">this</span>.cb(<span class="built_in">this</span>.vm, newVal, oldVal);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、在defineReavtive中收集依赖"><a href="#5、在defineReavtive中收集依赖" class="headerlink" title="5、在defineReavtive中收集依赖"></a>5、在defineReavtive中收集依赖</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span>(<span class="params">obj, key, value, enumerable</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>) &#123;</span><br><span class="line">        observe(value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Array]&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">new</span> Observer(value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//每个key都定义一个dep收集器</span></span><br><span class="line">    <span class="keyword">const</span> dep = <span class="keyword">new</span> Dep();</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        enumerable: !!enumerable,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被获取了！&quot;</span>);</span><br><span class="line">            <span class="comment">//只有当Dep.target为watcher时，才会被收集</span></span><br><span class="line">            <span class="keyword">if</span> (Dep.target) &#123;</span><br><span class="line">                dep.addDep(Dep.target);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被设置了！&quot;</span>);</span><br><span class="line">            observe(val);</span><br><span class="line">            value = val;</span><br><span class="line">            <span class="comment">//此处特别注意，一定要val赋值给value之后，才触发更新</span></span><br><span class="line">            dep.notify();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、实现一个compiler和class-MyVue"><a href="#6、实现一个compiler和class-MyVue" class="headerlink" title="6、实现一个compiler和class MyVue"></a>6、实现一个compiler和class MyVue</h3><p>这里是创建dom的fragment，操作真正的dom来实现数据层更新到dom中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compiler</span>(<span class="params">f, vm</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reg = <span class="regexp">/\&#123;\&#123;(.+?)\&#125;\&#125;/g</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; f.childNodes.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> node = f.childNodes[i];</span><br><span class="line">        <span class="keyword">if</span> (node.nodeType === <span class="number">1</span>) &#123;<span class="comment">//元素</span></span><br><span class="line">            <span class="comment">//递归遍历</span></span><br><span class="line">            compiler(node, vm)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.nodeType === <span class="number">3</span>) &#123;<span class="comment">//文本</span></span><br><span class="line">            <span class="keyword">let</span> expOfFn;</span><br><span class="line">            node.nodeValue = node.nodeValue.replace(reg, <span class="function">(<span class="params">_, s</span>) =&gt;</span> &#123;</span><br><span class="line">                expOfFn = s;</span><br><span class="line">                <span class="keyword">return</span> parsePath(s, vm)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span> (expOfFn) &#123;</span><br><span class="line">                <span class="comment">//给dom中每个person.name等这种表达式进行观察</span></span><br><span class="line">                <span class="keyword">new</span> Wachter(vm, expOfFn, <span class="function">(<span class="params">vm, newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">                    node.nodeValue = newVal;</span><br><span class="line">                    <span class="comment">//每次值发生更新后，都执行render方法，重新加载dom</span></span><br><span class="line">                    vm.render();</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyVue</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.$el = options.el ? <span class="built_in">document</span>.querySelector(options.el) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="built_in">this</span>.$data = options.data;</span><br><span class="line">        <span class="keyword">new</span> Observer(<span class="built_in">this</span>.$data);</span><br><span class="line">        <span class="built_in">this</span>.render();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> f = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">        <span class="keyword">let</span> firstChild;</span><br><span class="line">        <span class="keyword">while</span> (firstChild = <span class="built_in">this</span>.$el.firstChild) &#123;</span><br><span class="line">            f.appendChild(firstChild)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> newDom = compiler(f, <span class="built_in">this</span>);</span><br><span class="line">        <span class="built_in">this</span>.$el.appendChild(newDom);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以下还未实现：</p>
-<p>1、虚拟dom和diff算法，感觉有点难，后续继续攻克</p>
-<p>2、将data的值代理到实例中，比较简单，后续实现</p>
-<p>3、vue中实际上并非通过watcher每一个dom中的expression实现新旧值变化更新，实际上，源码中首次加载的expOrFn是更新函数：vm._render()，而且挂载过程若是有数据变化，会等所有的数据处理完毕后，执行vm._render()一次，性能上可以说比值变化一次就更新一次dom好很多</p>
 
-        </div>
+                                        </div>
 
-        
+                                    </div>
+                                </div>
+                            </div>
 
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2021/02/28/hello-world/"
-                        >
-                            <span class="title flex-center">
+
+                            <div class="article-content markdown-body">
+                                <p>​ vue3发布有段时间了，现在写vue2的源码解析，只是为了记录一下前段时间学习vue2源码的一些笔记，方便日后自己查阅。也是考虑到，现在对于前端的学习总是浅尝辄止，所以需要沉淀一下自己，深入地学习和总结。</p>
+                                <h2 id="发布订阅模式">
+                                    <a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h2>
+                                <h3 id="1、实现observe和defineReactive">
+                                    <a href="#1、实现observe和defineReactive" class="headerlink" title="1、实现observe和defineReactive"></a>1、实现observe和defineReactive</h3>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">observe</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys(obj);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> key = keys[i];</span><br><span class="line">        defineReactive(obj, key, obj[key], <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span>(<span class="params">obj, key, value, enumerable</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//如果是value继续监听</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>) &#123;</span><br><span class="line">        observe(value)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Array]&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">new</span> Observer(value)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        enumerable: !!enumerable,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被获取了！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被设置了！&quot;</span>);</span><br><span class="line">            value = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+                                <h3 id="2、实现类Observer">
+                                    <a href="#2、实现类Observer" class="headerlink" title="2、实现类Observer"></a>2、实现类Observer</h3>
+                                <h4 id="a、重写Array原型">
+                                    <a href="#a、重写Array原型" class="headerlink" title="a、重写Array原型"></a>a、重写Array原型</h4>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="keyword">let</span> arrayMethods = [</span><br><span class="line">    <span class="string">&#x27;push&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;pop&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;shift&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;unshift&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;reverse&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;splice&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sort&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrayProto = <span class="built_in">Object</span>.create(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">arrayMethods.forEach(<span class="function"><span class="params">method</span> =&gt;</span> &#123;</span><br><span class="line">    arrayProto[method] = <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(method + <span class="string">&quot;方法被使用了&quot;</span>);</span><br><span class="line">        <span class="built_in">Array</span>.prototype[method].call(<span class="built_in">this</span>, ...args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+                                <h4 id="b、实现类Observer">
+                                    <a href="#b、实现类Observer" class="headerlink" title="b、实现类Observer"></a>b、实现类Observer</h4>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.walk(value);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(value)) &#123;</span><br><span class="line">            <span class="comment">//覆盖数组的原型方法</span></span><br><span class="line">            value.__proto__ = arrayProto;</span><br><span class="line">            <span class="built_in">this</span>.dependArray(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">walk</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        observe(value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">dependArray</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; value.length; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Observer(value[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+                                <h4 id="c、校验结果">
+                                    <a href="#c、校验结果" class="headerlink" title="c、校验结果"></a>c、校验结果</h4>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;学不动了&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    list: [<span class="string">&#x27;vue&#x27;</span>,<span class="string">&#x27;源码&#x27;</span>, <span class="string">&#x27;老烦了&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Observer(obj);</span><br><span class="line">obj.name = <span class="string">&quot;也要学&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.age);</span><br><span class="line">obj.list.push(<span class="string">&#x27;是真的&#x27;</span>);</span><br><span class="line"><span class="comment">//打印结果</span></span><br><span class="line">name被设置了！</span><br><span class="line">age被获取了！</span><br><span class="line"><span class="number">18</span></span><br><span class="line">list被获取了！</span><br><span class="line">push方法被使用了</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+                                <p>至此，我们已经可以顺利实现数据监听了，虽然跟源码还是有些不同的，但这是看过源码后，自己试着写写的版本</p>
+                                <h3 id="3、实现Dep类">
+                                    <a href="#3、实现Dep类" class="headerlink" title="3、实现Dep类"></a>3、实现Dep类</h3>
+                                <p>Dep的实现还是比较简单，dep的主要作用就是收集watcher依赖和依赖通知更新</p>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.subs = [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//收集依赖</span></span><br><span class="line">    <span class="function"><span class="title">addDep</span>(<span class="params">sub</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.subs.push(sub)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//通知依赖更新</span></span><br><span class="line">    <span class="function"><span class="title">notify</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.subs.forEach(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">            sub.update();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+
+
+                                <h3 id="4、实现观察者Watcher">
+                                    <a href="#4、实现观察者Watcher" class="headerlink" title="4、实现观察者Watcher"></a>4、实现观察者Watcher</h3>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="comment">//获取data.person.name这种expression的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parsePath</span>(<span class="params">exp, vm</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> exp_list = exp.split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> exp_list.reduce(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pre[cur];</span><br><span class="line">    &#125;, vm.data)</span><br><span class="line">&#125;</span><br><span class="line">Dep.target = <span class="literal">null</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wachter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">vm, expOrFn, cb</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.vm = vm;</span><br><span class="line">        <span class="built_in">this</span>.expOrFn = expOrFn;</span><br><span class="line">        <span class="built_in">this</span>.cb = cb;</span><br><span class="line">        <span class="built_in">this</span>.value = <span class="built_in">this</span>.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        Dep.target = <span class="built_in">this</span>;</span><br><span class="line">        <span class="keyword">const</span> vm = <span class="built_in">this</span>.vm;</span><br><span class="line">        <span class="keyword">let</span> value = parsePath(<span class="built_in">this</span>.expOrFn, vm);</span><br><span class="line">        Dep.target = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">update</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> oldVal = <span class="built_in">this</span>.value;</span><br><span class="line">        <span class="keyword">const</span> newVal = <span class="built_in">this</span>.get();</span><br><span class="line">        <span class="built_in">this</span>.value = newVal;</span><br><span class="line">        <span class="keyword">if</span> (oldVal !== newVal) &#123;</span><br><span class="line">            <span class="comment">//如果值发生变化，执行更新回调</span></span><br><span class="line">            <span class="built_in">this</span>.cb(<span class="built_in">this</span>.vm, newVal, oldVal);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+                                <h3 id="5、在defineReavtive中收集依赖">
+                                    <a href="#5、在defineReavtive中收集依赖" class="headerlink" title="5、在defineReavtive中收集依赖"></a>5、在defineReavtive中收集依赖</h3>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span>(<span class="params">obj, key, value, enumerable</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>) &#123;</span><br><span class="line">        observe(value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Array]&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">new</span> Observer(value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//每个key都定义一个dep收集器</span></span><br><span class="line">    <span class="keyword">const</span> dep = <span class="keyword">new</span> Dep();</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">        configurable: <span class="literal">true</span>,</span><br><span class="line">        enumerable: !!enumerable,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被获取了！&quot;</span>);</span><br><span class="line">            <span class="comment">//只有当Dep.target为watcher时，才会被收集</span></span><br><span class="line">            <span class="keyword">if</span> (Dep.target) &#123;</span><br><span class="line">                dep.addDep(Dep.target);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(key + <span class="string">&quot;被设置了！&quot;</span>);</span><br><span class="line">            observe(val);</span><br><span class="line">            value = val;</span><br><span class="line">            <span class="comment">//此处特别注意，一定要val赋值给value之后，才触发更新</span></span><br><span class="line">            dep.notify();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+                                <h3 id="6、实现一个compiler和class-MyVue">
+                                    <a href="#6、实现一个compiler和class-MyVue" class="headerlink" title="6、实现一个compiler和class MyVue"></a>6、实现一个compiler和class MyVue</h3>
+                                <p>这里是创建dom的fragment，操作真正的dom来实现数据层更新到dom中</p>
+                                <figure class="highlight javascript">
+                                    <table>
+                                        <tr>
+                                            <td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td>
+                                            <td
+                                                class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compiler</span>(<span class="params">f, vm</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reg = <span class="regexp">/\&#123;\&#123;(.+?)\&#125;\&#125;/g</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; f.childNodes.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> node = f.childNodes[i];</span><br><span class="line">        <span class="keyword">if</span> (node.nodeType === <span class="number">1</span>) &#123;<span class="comment">//元素</span></span><br><span class="line">            <span class="comment">//递归遍历</span></span><br><span class="line">            compiler(node, vm)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.nodeType === <span class="number">3</span>) &#123;<span class="comment">//文本</span></span><br><span class="line">            <span class="keyword">let</span> expOfFn;</span><br><span class="line">            node.nodeValue = node.nodeValue.replace(reg, <span class="function">(<span class="params">_, s</span>) =&gt;</span> &#123;</span><br><span class="line">                expOfFn = s;</span><br><span class="line">                <span class="keyword">return</span> parsePath(s, vm)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span> (expOfFn) &#123;</span><br><span class="line">                <span class="comment">//给dom中每个person.name等这种表达式进行观察</span></span><br><span class="line">                <span class="keyword">new</span> Wachter(vm, expOfFn, <span class="function">(<span class="params">vm, newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">                    node.nodeValue = newVal;</span><br><span class="line">                    <span class="comment">//每次值发生更新后，都执行render方法，重新加载dom</span></span><br><span class="line">                    vm.render();</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyVue</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.$el = options.el ? <span class="built_in">document</span>.querySelector(options.el) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="built_in">this</span>.$data = options.data;</span><br><span class="line">        <span class="keyword">new</span> Observer(<span class="built_in">this</span>.$data);</span><br><span class="line">        <span class="built_in">this</span>.render();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> f = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">        <span class="keyword">let</span> firstChild;</span><br><span class="line">        <span class="keyword">while</span> (firstChild = <span class="built_in">this</span>.$el.firstChild) &#123;</span><br><span class="line">            f.appendChild(firstChild)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> newDom = compiler(f, <span class="built_in">this</span>);</span><br><span class="line">        <span class="built_in">this</span>.$el.appendChild(newDom);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td>
+                                        </tr>
+                                    </table>
+                                </figure>
+
+
+
+                                <h2 id="总结">
+                                    <a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+                                <p>以下还未实现：</p>
+                                <p>1、虚拟dom和diff算法，感觉有点难，后续继续攻克</p>
+                                <p>2、将data的值代理到实例中，比较简单，后续实现</p>
+                                <p>3、vue中实际上并非通过watcher每一个dom中的expression实现新旧值变化更新，实际上，源码中首次加载的expOrFn是更新函数：vm._render()，而且挂载过程若是有数据变化，会等所有的数据处理完毕后，执行vm._render()一次，性能上可以说比值变化一次就更新一次dom好很多</p>
+
+                            </div>
+
+
+
+
+                            <div class="article-nav">
+
+
+                                <div class="article-next">
+                                    <a class="next" rel="next" href="/2021/02/28/hello-world/">
+                                        <span class="title flex-center">
                                 <span class="post-nav-title-item">Hello World</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
+                                        <span class="post-nav-item">Next posts</span>
+                                        </span>
+                                        <span class="right arrow-icon flex-center">
                               <i class="fas fa-chevron-right"></i>
                             </span>
-                        </a>
+                                    </a>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
                     </div>
-                
-            </div>
-        
-
-        
-    </div>
-</div>
 
 
-                
+
+                </div>
+
             </div>
 
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+                    <div class="info-container">
+                        <div class="copyright-info info-item">
+                            &copy;
+
+                            <span>2020</span>&nbsp;-&nbsp; 2021&nbsp;
+
+                            <i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yuriy Hu</a>
+                        </div>
+
+                        <div class="theme-info info-item">
+                            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+                        </div>
+
+                    </div>
+                </footer>
+
+            </div>
         </div>
 
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-              <span>2020</span>&nbsp;-&nbsp;
-            
-            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yuriy Hu</a>
-        </div>
-        
-        <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
-        </div>
-        
-    </div>
-</footer>
 
-        </div>
-    </div>
-
-    
         <div class="post-tools">
-            $li-border-radius = 5px;
-$li-margin-bottom = 12px;
-
-.post-tools-container {
-
-  .tools-list {
-
-    li {
-      cursor: pointer;
-      width: $post-tool-button-width;
-      height: $post-tool-button-width;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: $li-margin-bottom;
-      background: var(--background-color);
-      color: var(--default-text-color);
-
-      i {
-        color: var(--default-text-color);
-      }
-
-      &:hover {
-        background: var(--primary-color);
-        color: var(--background-color);
-
-        i {
-          color: var(--background-color);
-        }
-      }
+        </div>
 
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+        <div class="right-bottom-side-tools">
+            <div class="side-tools-container">
+                <ul class="side-tools-list">
+                    <li class="tools-item tool-font-adjust-plus flex-center">
+                        <i class="fas fa-search-plus"></i>
+                    </li>
+
+                    <li class="tools-item tool-font-adjust-minus flex-center">
+                        <i class="fas fa-search-minus"></i>
+                    </li>
+
+                    <li class="tools-item tool-expand-width flex-center">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </li>
+
+                    <li class="tools-item tool-dark-light-toggle flex-center">
+                        <i class="fas fa-moon"></i>
+                    </li>
+
+                    <!-- rss -->
 
 
-      hover-style(true, 1.06, 1.06);
 
-      &.page-aside-toggle {
-        display: none;
 
-        +keep-tablet() {
-          display: none !important;
-        }
-      }
-    }
-  }
+                    <li class="tools-item tool-scroll-to-bottom flex-center">
+                        <i class="fas fa-arrow-down"></i>
+                    </li>
+                </ul>
 
-}
+                <ul class="exposed-tools-list">
+                    <li class="tools-item tool-toggle-show flex-center">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </li>
+
+                    <li class="tools-item tool-scroll-to-top flex-center">
+                        <i class="arrow-up fas fa-arrow-up"></i>
+                        <span class="percent"></span>
+                    </li>
+
+                </ul>
+            </div>
 
         </div>
-    
 
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
 
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
 
-        <li class="tools-item tool-expand-width flex-center">
-            <i class="fas fa-arrows-alt-h"></i>
-        </li>
+        <div class="image-viewer-container">
+            <img src="">
+        </div>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
 
-        <!-- rss -->
-        
 
-        
 
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
+    </main>
 
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
-    </ul>
-</div>
+
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/header-shrink.js"></script>
+    <script src="/js/back2top.js"></script>
+    <script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    <div class="post-scripts">
 
     </div>
-
-    
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-
-</main>
-
-
-
-<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
-
-
-
-
-
-
-
-<div class="post-scripts">
-    
-</div>
 
 
 
 </body>
+
 </html>
